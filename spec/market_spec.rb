@@ -58,4 +58,31 @@ RSpec.describe Market do
       expect(@market.vendors_that_sell(@item_4)).to eq([@vendor_2])
     end
   end
+
+  describe "#sorted_item_list" do
+    it "can return an array of the names of all items vendors have in stock" do
+      @market.add_vendor(@vendor_1)
+      @market.add_vendor(@vendor_2)
+      @market.add_vendor(@vendor_3)
+
+      expect(@market.sorted_item_list).to eq(["Banana Nice Cream", "Peach", "Peach-Raspberry Nice Cream", "Tomato"])
+    end
+  end
+
+  describe "#total_inventory" do
+    it "can return a hash" do
+      @market.add_vendor(@vendor_1)
+      @market.add_vendor(@vendor_2)
+      @market.add_vendor(@vendor_3)
+
+      expect(@market.total_inventory).to eq(
+        {
+          @item_4 => { 50 => [@vendor_2] },
+          @item_3 => { 25 => [@vendor_2] },
+          @item_2 => { 7 => [@vendor_1] },
+          @item_1 => { 100 => [@vendor_1, @vendor_3] }
+        }
+      )
+    end
+  end
 end
