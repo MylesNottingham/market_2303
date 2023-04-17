@@ -13,7 +13,7 @@ RSpec.describe Item do
       expect(@item_1.price).to eq("$0.75")
     end
 
-    xit "can initialize another item with attributes" do
+    it "can initialize another item with attributes" do
       expect(@item_2).to be_an(Item)
       expect(@item_2.name).to eq("Tomato")
       expect(@item_2.price).to eq("$0.50")
