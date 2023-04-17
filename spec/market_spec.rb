@@ -70,7 +70,7 @@ RSpec.describe Market do
   end
 
   describe "#total_inventory" do
-    it "can return a hash" do
+    it "can return a hash in a hash" do
       @market.add_vendor(@vendor_1)
       @market.add_vendor(@vendor_2)
       @market.add_vendor(@vendor_3)
@@ -83,6 +83,16 @@ RSpec.describe Market do
           @item_1 => { 100 => [@vendor_1, @vendor_3] }
         }
       )
+    end
+  end
+
+  describe "#overstocked_items" do
+    it "can return an array of overstocked items" do
+      @market.add_vendor(@vendor_1)
+      @market.add_vendor(@vendor_2)
+      @market.add_vendor(@vendor_3)
+
+      expect(@market.overstocked_items).to eq([@item_1])
     end
   end
 end
