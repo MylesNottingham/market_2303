@@ -14,4 +14,10 @@ class Vendor
   def stock(item, quantity)
     @inventory[item] += quantity
   end
+
+  def potential_revenue
+    @inventory.map do |item, quantity|
+      quantity * item.price.delete("$").to_f
+    end.sum
+  end
 end
