@@ -31,7 +31,7 @@ class Market
       end
     end
 
-    total_inventory = Hash.new
+    total_inventory = {}
     item_quantity.each do |item, quantity|
       quantity_vendors = {}
       quantity_vendors[quantity] = vendors_that_sell(item)

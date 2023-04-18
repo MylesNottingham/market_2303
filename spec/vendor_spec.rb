@@ -6,10 +6,10 @@ RSpec.describe Vendor do
     @vendor_1 = Vendor.new("Rocky Mountain Fresh")
     @vendor_2 = Vendor.new("Ba-Nom-a-Nom")
     @vendor_3 = Vendor.new("Palisade Peach Shack")
-    @item_1 = Item.new({name: "Peach", price: "$0.75"})
-    @item_2 = Item.new({name: "Tomato", price: "$0.50"})
-    @item_3 = Item.new({name: "Peach-Raspberry Nice Cream", price: "$5.30"})
-    @item_4 = Item.new({name: "Banana Nice Cream", price: "$4.25"})
+    @item_1 = Item.new({ name: "Peach", price: "$0.75" })
+    @item_2 = Item.new({ name: "Tomato", price: "$0.50" })
+    @item_3 = Item.new({ name: "Peach-Raspberry Nice Cream", price: "$5.30" })
+    @item_4 = Item.new({ name: "Banana Nice Cream", price: "$4.25" })
   end
 
   describe "#initialize" do
@@ -30,17 +30,17 @@ RSpec.describe Vendor do
     it "can add a given quantity of an item to inventory" do
       expect(@vendor_1.check_stock(@item_1)).to eq(0)
       @vendor_1.stock(@item_1, 30)
-      expect(@vendor_1.inventory).to eq({@item_1 => 30})
+      expect(@vendor_1.inventory).to eq({ @item_1 => 30 })
       expect(@vendor_1.check_stock(@item_1)).to eq(30)
     end
 
     it "can add more of a given quantity of an item to inventory" do
       expect(@vendor_1.check_stock(@item_1)).to eq(0)
       @vendor_1.stock(@item_1, 30)
-      expect(@vendor_1.inventory).to eq({@item_1 => 30})
+      expect(@vendor_1.inventory).to eq({ @item_1 => 30 })
       expect(@vendor_1.check_stock(@item_1)).to eq(30)
       @vendor_1.stock(@item_1, 25)
-      expect(@vendor_1.inventory).to eq({@item_1 => 55})
+      expect(@vendor_1.inventory).to eq({ @item_1 => 55 })
       expect(@vendor_1.check_stock(@item_1)).to eq(55)
     end
 
@@ -49,7 +49,7 @@ RSpec.describe Vendor do
       expect(@vendor_1.check_stock(@item_2)).to eq(0)
       @vendor_1.stock(@item_2, 30)
       expect(@vendor_1.check_stock(@item_2)).to eq(30)
-      expect(@vendor_1.inventory).to eq({@item_1 => 55, @item_2 => 30})
+      expect(@vendor_1.inventory).to eq({ @item_1 => 55, @item_2 => 30 })
     end
   end
 
