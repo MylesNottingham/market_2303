@@ -34,7 +34,8 @@ class Market
     total_inventory = {}
     item_quantity.each do |item, quantity|
       quantity_vendors = {}
-      quantity_vendors[quantity] = vendors_that_sell(item)
+      quantity_vendors["quantity"] = quantity
+      quantity_vendors["vendors"] = vendors_that_sell(item)
       total_inventory[item] = quantity_vendors
     end
     total_inventory
@@ -43,8 +44,8 @@ class Market
   def overstocked_items
     items = []
     total_inventory.each do |item|
-      quantity = item[1].keys[0]
-      number_of_vendors = item[1].values[0].count
+      quantity = item[1]["quantity"]
+      number_of_vendors = item[1]["vendors"].count
       items << item[0] if quantity > 50 && number_of_vendors > 1
     end
     items

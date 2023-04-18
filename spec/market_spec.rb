@@ -77,10 +77,22 @@ RSpec.describe Market do
 
       expect(@market.total_inventory).to eq(
         {
-          @item_4 => { 50 => [@vendor_2] },
-          @item_3 => { 25 => [@vendor_2] },
-          @item_2 => { 7 => [@vendor_1] },
-          @item_1 => { 100 => [@vendor_1, @vendor_3] }
+          @item_1 => {
+            "quantity" => 100,
+            "vendors" => [@vendor_1, @vendor_3]
+          },
+          @item_2 => {
+            "quantity" => 7,
+            "vendors" => [@vendor_1]
+          },
+          @item_3 => {
+            "quantity" => 25,
+            "vendors" => [@vendor_2]
+          },
+          @item_4 => {
+            "quantity" => 50,
+            "vendors" => [@vendor_2]
+          }
         }
       )
     end
