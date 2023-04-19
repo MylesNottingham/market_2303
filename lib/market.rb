@@ -24,13 +24,6 @@ class Market
   end
 
   def total_inventory
-    item_quantity = Hash.new(0)
-    @vendors.each do |vendor|
-      vendor.inventory.map do |item, quantity|
-        item_quantity[item] += quantity
-      end
-    end
-
     total_inventory = {}
     item_quantity.each do |item, quantity|
       quantity_vendors = {}
@@ -49,5 +42,15 @@ class Market
       items << item[0] if quantity > 50 && number_of_vendors > 1
     end
     items
+  end
+
+  def item_quantity
+    item_quantity = Hash.new(0)
+    @vendors.each do |vendor|
+      vendor.inventory.map do |item, quantity|
+        item_quantity[item] += quantity
+      end
+    end
+    item_quantity
   end
 end

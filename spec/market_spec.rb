@@ -107,4 +107,21 @@ RSpec.describe Market do
       expect(@market.overstocked_items).to eq([@item_1])
     end
   end
+
+  describe "#item_quantity" do
+    it "can return a hash of items and their quantities" do
+      @market.add_vendor(@vendor_1)
+      @market.add_vendor(@vendor_2)
+      @market.add_vendor(@vendor_3)
+
+      expect(@market.item_quantity).to eq(
+        {
+          @item_1 => 100,
+          @item_2 => 7,
+          @item_3 => 25,
+          @item_4 => 50
+        }
+      )
+    end
+  end
 end
